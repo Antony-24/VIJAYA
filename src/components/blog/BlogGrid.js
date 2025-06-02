@@ -9,6 +9,7 @@ import { BlogCard } from "./BlogCard";
 
 const articles = [
   {
+    id: 1,
     tag: "News",
     image: nw,
     date: "December 7, 2024",
@@ -16,6 +17,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 2,
     tag: "Blog",
     image: blog1,
     date: "December 7, 2024",
@@ -23,6 +25,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 3,
     tag: "News",
     image: nw1,
     date: "December 7, 2024",
@@ -30,6 +33,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 4,
     tag: "Blog",
     image: nw2,
     date: "December 7, 2024",
@@ -37,6 +41,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 5,
     tag: "News",
     image: nw3,
     date: "December 7, 2024",
@@ -44,6 +49,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 6,
     tag: "Blog",
     image: blog1,
     date: "December 7, 2024",
@@ -51,6 +57,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 7,
     tag: "News",
     image: nw,
     date: "December 7, 2024",
@@ -58,6 +65,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 8,
     tag: "Blog",
     image: nw1,
     date: "December 7, 2024",
@@ -65,6 +73,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 9,
     tag: "News",
     image: nw2,
     date: "December 7, 2024",
@@ -72,6 +81,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 10,
     tag: "Blog",
     image: nw3,
     date: "December 7, 2024",
@@ -79,6 +89,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 11,
     tag: "News",
     image: blog1,
     date: "December 7, 2024",
@@ -86,6 +97,7 @@ const articles = [
       "Spaces are being revolutionized modern architectural marvels.",
   },
   {
+    id: 12,
     tag: "Blog",
     image: nw,
     date: "December 7, 2024",

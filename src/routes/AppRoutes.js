@@ -1,15 +1,16 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Layout from '../components/Layout';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "../components/Layout";
 
-import Home from '../pages/Home';
-import AboutUs from '../pages/AboutUs';
-import VirtualTour from '../pages/VirtualTour';
-import Facilities from '../pages/Facilities';
-import KPVGroup from '../pages/KPVGroup';
-import Gallery from '../pages/Gallery';
-import Blog from '../pages/Blog';
-import ContactUs from '../pages/ContactUs';
+import Home from "../pages/Home";
+import AboutUs from "../pages/AboutUs";
+import VirtualTour from "../pages/VirtualTour";
+import Facilities from "../pages/Facilities";
+import KPVGroup from "../pages/KPVGroup";
+import Gallery from "../pages/Gallery";
+import Blog from "../pages/Blog";
+import ContactUs from "../pages/ContactUs";
+import BlogDetails from "../pages/BlogDetails";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route path="/kpv-group" element={<KPVGroup />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
     </Layout>
