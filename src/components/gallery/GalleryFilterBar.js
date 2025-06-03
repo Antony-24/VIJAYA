@@ -24,7 +24,7 @@ export function GalleryFilterBar() {
             className={`px-6 py-2.5 rounded-full transition-all ${
               activeFilter === "Image"
                 ? "bg-[#C6A14B] text-white font-semibold shadow-md"
-                : "bg-[#f5f5f5] text-[#333] font-semibold hover:bg-[#e5e5e5]"
+                : "bg-[#f5f5f5] !text-[#333] font-semibold hover:bg-[#e5e5e5]"
             }`}
           >
             Image
@@ -35,7 +35,7 @@ export function GalleryFilterBar() {
             className={`px-6 py-2.5 rounded-full transition-all ${
               activeFilter === "Video"
                 ? "bg-[#C6A14B] text-white font-semibold shadow-md"
-                : "bg-[#f5f5f5] text-[#333] font-semibold hover:bg-[#e5e5e5]"
+                : "bg-[#f5f5f5] !text-[#333] font-semibold hover:bg-[#e5e5e5]"
             }`}
           >
             Video
