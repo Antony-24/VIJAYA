@@ -38,7 +38,7 @@ const Header = () => {
         scrolled ? 'bg-black text-white' : 'text-white'
       }`}
     >
-      <div className="flex justify-between items-center py-8 max-w-[1500px] mx-auto">
+      <div className="flex justify-between items-center py-8 max-w-[90%] mx-auto">
         <Link to="/" onClick={closeMenu}>
           <img
             src={scrolled ? logoLight : logoDark}
