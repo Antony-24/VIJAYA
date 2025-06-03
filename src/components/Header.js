@@ -46,7 +46,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${getHeaderStyle()}`}
     >
-      <div className="flex justify-between items-center py-8 max-w-[1500px] mx-auto">
+      <div className="flex justify-between items-center py-8 max-w-[90%] mx-auto">
         <Link to="/" onClick={closeMenu}>
           <img
             src={isHomePage ? (scrolled ? logoLight : logoDark) : logoLight}

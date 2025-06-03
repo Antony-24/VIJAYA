@@ -2,34 +2,27 @@ import React from "react";
 import HeroSlider from "../components/HeroSlider";
 import AboutGrid from "../components/AboutGrid";
 import ImageAccordion from "../components/ImageAccordion";
-import AmenitiesSection from "../components/AmenitiesSection";
+import AmenityCard from "../components/AmenityCard";
 import GallerySlider from "../components/GallerySlider";
 import ClientSlider from "../components/ClientSlider";
-import ImageExplosion from "../components/ImageExplosion";
 import TestimonialsSlider from "../components/TestimonialsSlider";
 import NewsAndBlogs from "../components/NewsAndBlogs";
+import AnimatedCollage from "../components/AnimatedCollage";
 
-const Home = () => {
+function Home() {
   return (
     <div>
       <HeroSlider />
       <AboutGrid />
       <ImageAccordion />
-
-      <div className="text-center my-5">
-        <p className="text-[#AA8453] font-[16px] font-poppins">FACILITIES</p>
-        <h2 className="text-black text-[42px]">
-          World-Class Amenities for Every Occasion
-        </h2>
-      </div>
-      <AmenitiesSection />
+      <AmenityCard />
       <GallerySlider />
       <ClientSlider />
-      <ImageExplosion />
+      <AnimatedCollage />
       <TestimonialsSlider />
       <NewsAndBlogs />
     </div>
   );
-};
+}
 
 export default Home;

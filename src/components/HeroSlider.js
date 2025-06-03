@@ -1,99 +1,131 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import slider1 from "../assets/images/slider-2.png"
-import slider2 from "../assets/images/slider1.svg"
-import slider3 from "../assets/images/slider-1.jpg"
+import React, { useState, useEffect } from 'react';
+import slide1 from '../assets/images/slider-1.jpg';
+import slide2 from '../assets/images/slider-2.png';
 
 
-const slides = [
+const slidesData = [
   {
     id: 1,
-    title: "Elevate Your Events With Excellence",
-    subtitle: "The Ultimate Luxury Experience",
-    image: slider1,
-    thumbnail: slider1,
+    image: slide1, // Replace with actual image paths or URLs
+    title: 'Elevate Your Events With Excellence',
+    subtitle: 'The Ultimate Luxury Experience',
+    buttonText: 'Plan Your Event',
+    buttonHref: '#',
+    thumbnail: slide1, // Replace with actual thumbnail paths or URLs
+    thumbnailAlt: 'Slide 1 Thumbnail',
   },
   {
     id: 2,
-    title: "Host Memorable Moments",
-    subtitle: "A Venue Like No Other",
-    image: slider2,
-    thumbnail: slider2,
+    image: slide2,
+    title: 'Unforgettable Moments Await',
+    subtitle: 'Discover Sophistication & Style',
+    buttonText: 'Explore Now',
+    buttonHref: '#',
+    thumbnail: slide2,
+    thumbnailAlt: 'Slide 2 Thumbnail',
   },
   {
     id: 3,
-    title: "Experience Elegance & Class",
-    subtitle: "Redefine Your Expectations",
-    image: slider3,
-    thumbnail: slider3,
+    image: slide1,
+    title: 'Host Your Dream Gala Here',
+    subtitle: 'World-Class Facilities',
+    buttonText: 'Book a Tour',
+    buttonHref: '#',
+    thumbnail: slide1,
+    thumbnailAlt: 'Slide 3 Thumbnail',
   },
 ];
 
-export default function EventHero() {
-  const [index, setIndex] = useState(0);
+const HeroSlider = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Auto-advance every 7 seconds
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 7000);
+
+    return () => clearInterval(interval);
   }, []);
 
-  const current = slides[index];
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden mt-[-2.1rem]">
-      {/* Background image transition */}
-      <AnimatePresence>
-        <motion.img
-          key={current.id}
-          src={current.image}
-          alt={current.title}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-1000"
-        />
-      </AnimatePresence>
+    <div className="relative w-full h-[50vh] lg:h-[90vh] overflow-hidden py-12">
+      {/* Main Slides */}
+      <div className="absolute inset-0">
+        {slidesData.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`
+              absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000
+              ${index === currentIndex ? 'opacity-100 z-20' : 'opacity-0 z-10'}
+            `}
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+        ))}
+      </div>
 
-      {/* Overlay content */}
-      <div className="relative z-10 w-full h-full bg-black/50 flex items-end">
-        <div className="w-[1500px] mx-auto py-6 md:py-12 flex flex-col md:flex-row justify-between items-end md:items-end">
-          {/* Content */}
-          <div className="text-white max-w-xl md:mb-0 mb-8">
-            <p className="uppercase text-xs md:text-sm tracking-widest">{current.subtitle}</p>
-            <h1 className="text-3xl md:text-5xl font-serif font-medium leading-tight mb-4 md:mb-6">
-              {current.title}
-            </h1>
-            <button className="bg-yellow-500 text-black px-5 py-2.5 text-sm md:text-base rounded-full font-semibold flex items-center gap-2 hover:bg-yellow-400 transition">
-              Plan Your Event
-              <span className="text-lg">↗</span>
+      {/* Overlay (dark gradient to improve text visibility) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10" />
+
+      {/* Slide Content */}
+      <div className="relative z-30 flex flex-col justify-start md:justify-center lg:justify-end h-full px-6 md:px-12 lg:px-24 text-white">
+        <p className="text-sm tracking-widest uppercase mb-2">
+          {slidesData[currentIndex].subtitle}
+        </p>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight mb-6 max-w-3xl">
+          {slidesData[currentIndex].title}
+        </h1>
+        <a
+          href={slidesData[currentIndex].buttonHref}
+          className="inline-block bg-yellow-500 hover:bg-yellow-600 transition-colors text-black font-medium py-3 px-6 rounded-md w-full md:w-[20%]"
+        >
+          {slidesData[currentIndex].buttonText}
+        </a>
+      </div>
+
+      {/* Thumbnails / Pagination (aligned to right) */}
+      <div className="absolute bottom-6 right-6 z-40 w-auto px-4">
+        <div className="flex space-x-4">
+          {slidesData.map((slide, index) => (
+            <button
+              key={slide.id}
+              onClick={() => goToSlide(index)}
+              className={`relative overflow-hidden rounded-md transition-transform duration-300 focus:outline-none
+                ${index === currentIndex
+                  ? 'scale-110 ring-2 ring-yellow-500 w-[20%]'
+                  : 'opacity-70 hover:opacity-100'}
+              `}
+            >
+              <img
+                src={slide.thumbnail}
+                alt={slide.thumbnailAlt}
+                className="w-24 h-16 object-cover"
+              />
+              {index === currentIndex && (
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-7 w-7 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-4.586 2.664A1 1 0 019 12.84V7.16a1 1 0 011.166-.986l4.586 2.664a1 1 0 010 1.768z" />
+                  </svg>
+                </div>
+              )}
             </button>
-          </div>
-
-          {/* Thumbnails - below on mobile, right on desktop */}
-          <div className="flex md:flex-row flex-wrap gap-3 md:gap-3 md:ml-6">
-            {slides.map((slide, i) => (
-              <button
-                key={slide.id}
-                onClick={() => setIndex(i)}
-                className={`relative w-24 h-16 md:w-28 md:h-20 rounded-md overflow-hidden border-2 ${
-                  i === index ? "border-yellow-500" : "border-transparent"
-                } hover:border-yellow-400 transition-all`}
-              >
-                <img
-                  src={slide.thumbnail}
-                  alt="thumb"
-                  className="w-full h-full object-cover"
-                />
-                {i === index && (
-                  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-                )}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default HeroSlider;

@@ -98,7 +98,7 @@ const GallerySlider = () => {
     >
       <div className="max-w-screen-2xl mx-auto px-6">
         {/* Header + Tabs */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-12 w-[90%] mx-auto">
           <div>
             <p className="uppercase tracking-widest text-sm text-white/70">Gallery</p>
             <h2 className="text-4xl font-serif">Memorable Moments</h2>

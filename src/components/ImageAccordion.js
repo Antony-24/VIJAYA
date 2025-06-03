@@ -1,100 +1,165 @@
-import { useState } from 'react';
-import acc1 from '../assets/images/slider-1.jpg';
-import acc2 from '../assets/images/slider-2.png';
+import React, { useState } from 'react';
+import accordian1 from '../assets/images/accordian.svg'
+import accordian2 from '../assets/images/accordian1.svg'
 
 const accordionItems = [
   {
+    id: 1,
     title: 'Corporate Events',
-    description: 'Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue...',
-    image: acc1,
+    description:
+      'Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue—it’s where dreams are brought to life. A proud endeavor of the esteemed ',
+    image: accordian1,
   },
   {
+    id: 2,
     title: 'Weddings & Celebrations',
-    description: 'Celebrate life’s most beautiful moments...',
-    image: acc2,
+    description:
+      'Our exquisite wedding spaces blend timeless elegance with modern luxury. From grand ballrooms to intimate courtyards, we curate every detail to make your special day unforgettable—complete with personalized décor, gourmet catering, and world-class hospitality.',
+    image: accordian2,
   },
   {
+    id: 3,
     title: 'Exhibitions & Conferences',
-    description: 'Host groundbreaking showcases...',
-    image: acc1,
+    description:
+      'With state-of-the-art AV systems and sprawling exhibit halls, Vijaya is the perfect setting for large-scale exhibitions, trade shows, and international conferences. Our dedicated event team ensures seamless logistics and unparalleled technical support.',
+    image: accordian2,
   },
   {
+    id: 4,
     title: 'Dining Area',
-    description: 'Dine in elegance and class...',
-    image: acc2,
+    description:
+      'Indulge in gourmet cuisine in our elegant dining spaces. From plated fine dining to lavish buffet spreads, our chefs use the freshest ingredients to craft menus that satisfy every palate—whether it’s a corporate luncheon or a black-tie gala.',
+    image: accordian1,
   },
 ];
 
-export default function ImageAccordion() {
-  const [active, setActive] = useState(0);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCursorPos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
+const ImageAccordion = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="w-full max-w-[1500px] mx-auto">
-      <div className="flex h-[600px] w-full overflow-hidden">
+    <section className="w-full px-6 py-12 lg:px-24 lg:py-24">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <span className="text-sm tracking-widest uppercase text-yellow-500">
+            Services
+          </span>
+          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold leading-snug">
+            A Venue Where Every Event <br className="hidden lg:block" />
+            Becomes A Masterpiece.
+          </h2>
+        </div>
+        <div className="text-gray-700">
+          <p>
+            Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue—it’s where dreams are brought to life. A proud endeavor of the esteemed KPV Group, Vijaya has been designed to host the most prestigious events with unmatched sophistication. For decades, Vijaya has been.
+          </p>
+        </div>
+      </div>
+
+      {/* MOBILE VERSION: stacked cards */}
+      <div className="mt-12 block lg:hidden space-y-8">
+        {accordionItems.map((item) => (
+          <div
+            key={item.id}
+            className="relative w-full h-[40vh] bg-cover bg-center bg-no-repeat overflow-hidden rounded-lg transition-all duration-500"
+            style={{ backgroundImage: `url(${item.image})` }}
+          >
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/40" />
+
+            {/* Content overlay */}
+            <div className="relative z-10 flex flex-col justify-between h-full p-6 text-white">
+              <div>
+                <h3 className="text-xl font-serif font-semibold leading-snug mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm">{item.description}</p>
+              </div>
+              <button className="self-start bg-yellow-500 hover:bg-yellow-600 transition-colors text-black font-medium py-2 px-4 rounded-full">
+                View More
+              </button>
+            </div>
+
+            {/* Number badge (mobile always shows it) */}
+            <span className="absolute top-4 right-4 inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-black font-medium rounded-full">
+              0{item.id}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* DESKTOP/LARGE-SCREEN VERSION: image accordion */}
+      <div className="mt-12 hidden lg:flex lg:h-[60vh]">
         {accordionItems.map((item, index) => {
-          const isActive = active === index;
+          const isActive = index === activeIndex;
 
           return (
             <div
-              key={index}
-              onClick={() => setActive(index)}
-              onMouseMove={isActive ? handleMouseMove : undefined}
-              className={`relative group transition-all duration-700 ease-in-out cursor-pointer ${
-                isActive ? 'md:flex-[5] flex-[3]' : 'md:flex-[0.5] flex-[0.75]'
-              }`}
-              style={{
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
+              key={item.id}
+              onMouseEnter={() => setActiveIndex(index)}
+              className={`
+                relative
+                bg-cover bg-center bg-no-repeat mx-1
+                transition-all duration-500 ease-in-out
+                overflow-hidden
+                ${isActive ? 'flex-[5]' : 'flex-[0.5]'}
+              `}
+              style={{ backgroundImage: `url(${item.image})` }}
             >
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/40 z-0" />
+              {/* Black Overlay (always present, opacity varies) */}
+              <div
+                className={`
+                  absolute inset-0 bg-black transition-opacity duration-500 ease-in-out
+                  ${isActive ? 'opacity-50' : 'opacity-30'}
+                `}
+              />
 
-              {/* Active Content */}
-              {isActive ? (
-                <div className="absolute bottom-6 left-6 text-white z-10 transition-all duration-700 ease-in-out opacity-100 translate-y-0">
-                  <h2 className="text-xl md:text-2xl font-semibold">{item.title}</h2>
-                  <p className="text-sm md:text-base mt-2 max-w-md">{item.description}</p>
-                </div>
-              ) : (
-                // Inactive Content at Bottom
-                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white z-10 flex flex-col items-center">
-                  <div className="mb-2 bg-[#cfa349] w-10 h-10 flex items-center justify-center rounded-full text-sm font-bold">
-                    {`0${index + 1}`}
-                  </div>
-                  <span className="text-sm tracking-wider mt-1 rotate-[-90deg] whitespace-nowrap">
-                    {item.title}
-                  </span>
-                </div>
-              )}
-
-              {/* Cursor-following "View More" circle */}
+              {/* Active content (only when hovered/active) */}
               {isActive && (
-                <div
-                  className="absolute z-20 pointer-events-none transition-transform duration-200 ease-out"
-                  style={{
-                    transform: `translate(${cursorPos.x - 48}px, ${cursorPos.y - 48}px)`,
-                  }}
-                >
-                  <div className="w-24 h-24 rounded-full border border-white flex items-center justify-center text-white text-sm font-medium backdrop-blur-md bg-white/10">
-                    View More
-                  </div>
+                <div className="absolute inset-0 z-10 flex flex-col justify-center lg:justify-end px-8 lg:px-16 text-white">
+                  <h3 className="text-2xl font-serif font-semibold leading-snug mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-base max-w-lg mb-6">
+                    {item.description}
+                  </p>
                 </div>
               )}
+
+              {/* Inactive tab label & number (bottom-center), active does not show number */}
+              <div
+                className={`
+                  absolute bottom-4 left-1/2 transform -translate-x-1/2
+                  flex flex-col items-center
+                  transition-opacity duration-500
+                `}
+              >
+                {/* Rotated title: hide when active */}
+                <span
+                  className={`
+                    text-white text-xs sm:text-sm font-medium tracking-wider
+                    transform -rotate-90 origin-center
+                    mb-24                     /* adds gap below text */
+                    whitespace-nowrap        /* prevents wrapping */
+                    ${isActive ? 'opacity-0' : 'opacity-100'}
+                  `}
+                >
+                  {item.title}
+                </span>
+
+                {/* Number circle: render only if NOT active */}
+                {!isActive && (
+                  <span className="inline-flex items-center justify-center w-8 h-8 text-sm font-medium text-black bg-yellow-500 rounded-full">
+                    0{item.id}
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export default ImageAccordion;
