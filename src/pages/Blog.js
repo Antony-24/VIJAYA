@@ -5,7 +5,6 @@ import { BlogGrid } from "../components/blog/BlogGrid";
 function Blog() {
   return (
     <div>
-      <div className="top-[100px]"></div>
       {/* Header Section */}
       <HeaderSection />
 

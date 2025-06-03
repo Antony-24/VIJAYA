@@ -2,14 +2,14 @@ import React from "react";
 
 const BlogDetails = () => {
   return (
-    <div className="top-[300px]">
-      <div className="max-w-6xl mx-auto px-4 py-16 bg-white">
+    <div className="w-full relative top-[80px]">
+      <div className="max-w-[90%] mx-auto py-16 bg-white">
         {/* Header Image */}
         <div className="w-full mb-10">
           <img
             src={require("../assets/images/blog-1.jpg")}
             alt="Blog Header"
-            className="w-full h-[400px] object-cover"
+            className="w-full h-[200px] md:h-[400px] object-cover"
           />
         </div>
 
@@ -55,12 +55,12 @@ const BlogDetails = () => {
             <img
               src={require("../assets/images/blog-1.jpg")}
               alt="Blog Detail 1"
-              className="w-full md:w-1/2 h-64 object-cover rounded-lg"
+              className="w-full md:w-1/2 h-64 object-cover"
             />
             <img
               src={require("../assets/images/gallery-1.png")}
               alt="Blog Detail 2"
-              className="w-full md:w-1/2 h-64 object-cover rounded-lg"
+              className="w-full md:w-1/2 h-64 object-cover"
             />
           </div>
 

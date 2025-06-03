@@ -31,16 +31,16 @@ export const AboutUsSection = () => {
           unforgettable experiences.
         </p>
       </div>
-      <div className="md:w-1/2 flex flex-row gap-6 justify-center items-end">
+      <div className="md:w-1/2 flex flex-row gap-6 justify-center items-end overflow-hidden">
         <img
           src={aboutUsImage1}
           alt="about us"
-          className="w-64 h-80 object-cover"
+          className="w-48 h-64 md:w-64 md:h-80 object-cover"
         />
         <img
           src={aboutUsImage2}
           alt="about us"
-          className="w-64 h-80 translate-y-[-60px] object-cover"
+          className="w-48 h-64 md:w-64 md:h-80 md:translate-y-[-60px] object-cover"
         />
       </div>
     </section>

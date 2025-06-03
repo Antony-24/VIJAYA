@@ -9,7 +9,6 @@ import { GroupSection } from "../components/aboutus/GroupSection";
 function AboutUs() {
   return (
     <div>
-      <div className="top-[100px]"></div>
       {/* Header Section */}
       <HeaderSection />
 

@@ -115,7 +115,7 @@ export function BlogGrid() {
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
+    <section className="py-16 max-w-[90%] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {currentArticles.map((item, idx) => (
           <BlogCard key={idx} {...item} />

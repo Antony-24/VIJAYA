@@ -14,7 +14,7 @@ const images = [
 
 export function GalleryGrid() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[90%] mx-auto gap-6 pb-8">
       {images.map((src, idx) => (
         <div
           key={idx}
