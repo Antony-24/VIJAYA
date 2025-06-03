@@ -46,27 +46,27 @@ const AnimatedCollage = () => {
         <div className="max-w-md mx-auto grid grid-cols-2 gap-4">
           <img
             src={anime1}
-            alt="Image 1"
+            alt="anime 1"
             className="w-full h-auto object-cover rounded-lg"
           />
           <img
             src={anime2}
-            alt="Image 2"
+            alt="anime 2"
             className="w-full h-auto object-cover rounded-lg"
           />
           <img
             src={anime3}
-            alt="Image 3"
+            alt="anime 3"
             className="w-full h-auto object-cover rounded-lg"
           />
           <img
             src={anime4}
-            alt="Image 4"
+            alt="anime 4"
             className="w-full h-auto object-cover rounded-lg"
           />
           <img
             src={anime5}
-            alt="Center Image"
+            alt="anime 5"
             className="w-2/3 h-auto object-cover rounded-lg"
           />
         </div>
@@ -83,7 +83,7 @@ const AnimatedCollage = () => {
       {/* Image 1: top-left */}
       <img
         src={anime1}
-        alt="Image 1"
+        alt="anime 1"
         className={`
           absolute
           w-56 h-auto object-cover shadow-lg
@@ -100,7 +100,7 @@ const AnimatedCollage = () => {
       {/* Image 2: top-right */}
       <img
         src={anime2}
-        alt="Image 2"
+        alt="anime 2"
         className={`
           absolute
           w-56 h-auto object-cover shadow-lg
@@ -117,7 +117,7 @@ const AnimatedCollage = () => {
       {/* Image 3: bottom-left */}
       <img
         src={anime3}
-        alt="Image 3"
+        alt="anime 3"
         className={`
           absolute
           w-56 h-auto object-cover shadow-lg
@@ -134,7 +134,7 @@ const AnimatedCollage = () => {
       {/* Image 4: bottom-right */}
       <img
         src={anime4}
-        alt="Image 4"
+        alt="anime 4"
         className={`
           absolute
           w-56 h-auto object-cover shadow-lg
@@ -151,7 +151,7 @@ const AnimatedCollage = () => {
       {/* Center Image */}
       <img
         src={anime5}
-        alt="Center Image"
+        alt="anime 5"
         className={`
           absolute
           w-32 h-auto object-cover shadow-lg
