@@ -61,7 +61,9 @@ export default function Footer() {
             <li>
               <Link to="/privacy-policy">Privacy Policy</Link>
             </li>
-            <li>Terms and Conditions</li>
+            <li>
+              <Link to="/terms-and-conditions">Terms and Conditions</Link>
+            </li>
             <li>FAQ</li>
           </ul>
           <h4 className="mt-6 mb-2 font-serif text-sm">Follow Us</h4>
