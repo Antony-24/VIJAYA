@@ -1,5 +1,6 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaPhoneAlt } from 'react-icons/fa';
 import logo from '../assets/images/logo.svg'
+import { Link } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -51,8 +52,7 @@ export default function Footer() {
         <div>
           <h4 className="font-serif text-lg mb-4">Other Links</h4>
           <ul className="space-y-2 text-sm">
-            <li>Privacy Policy</li>
-            <li>Terms and Conditions</li>
+           <li> <a href='https:localhost:3000/privacy-policy'>Privacy Policy</a> </li>
             <li>FAQ</li>
           </ul>
           <h4 className="mt-6 mb-2 font-serif text-sm">Follow Us</h4>
