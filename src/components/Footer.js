@@ -1,6 +1,11 @@
-import { FaFacebookF, FaInstagram, FaYoutube, FaPhoneAlt } from 'react-icons/fa';
-import logo from '../assets/images/logo.svg'
-import { Link } from 'lucide-react';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import logo from "../assets/images/logo.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -13,7 +18,8 @@ export default function Footer() {
             <img src={logo} alt="Logo" className="h-12" />
           </div>
           <p className="text-sm mb-2">
-            Perumthuruthy P. O. Ezhinjillam, Thiruvalla, Pathanamthitta, Kerala, India
+            Perumthuruthy P. O. Ezhinjillam, Thiruvalla, Pathanamthitta, Kerala,
+            India
           </p>
           <div className="flex items-center space-x-2 text-sm my-2">
             <FaPhoneAlt />
@@ -52,7 +58,10 @@ export default function Footer() {
         <div>
           <h4 className="font-serif text-lg mb-4">Other Links</h4>
           <ul className="space-y-2 text-sm">
-           <li> <a href='https:localhost:3000/privacy-policy'>Privacy Policy</a> </li>
+            <li>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+            </li>
+            <li>Terms and Conditions</li>
             <li>FAQ</li>
           </ul>
           <h4 className="mt-6 mb-2 font-serif text-sm">Follow Us</h4>

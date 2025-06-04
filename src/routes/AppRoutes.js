@@ -11,7 +11,7 @@ import Gallery from "../pages/Gallery";
 import Blog from "../pages/Blog";
 import ContactUs from "../pages/ContactUs";
 import BlogDetails from "../pages/BlogDetails";
-import PrivacyPolicy from "../components/PrivacyPolicy/PrivacyPolicy";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 const AppRoutes = () => {
   return (
@@ -26,7 +26,7 @@ const AppRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogDetails />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </Layout>
   );
