@@ -3,7 +3,7 @@ import headerImage from "../../assets/images/about_us-1.png";
 
 export const HeaderSection = () => {
   return (
-    <section className="w-full aspect-[1920/500] relative top-[80px] mb-10">
+    <section className="w-full h-[300px] relative top-[80px] mb-10">
       <img
         src={headerImage}
         alt="about us"

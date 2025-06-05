@@ -6,13 +6,14 @@ import anime4 from "../assets/images/anime4.svg";
 import anime5 from "../assets/images/anime5.svg";
 import { Button } from "./core/Button";
 
+const images = [anime1, anime2, anime3, anime4, anime5];
+
 const AnimatedCollage = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [triggerAnimation, setTriggerAnimation] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const containerRef = useRef(null);
 
-  // 1) Detect "large screen" (≥1024px) vs. smaller
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
     checkScreen();
@@ -20,10 +21,8 @@ const AnimatedCollage = () => {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // 2) On large screens, observe container → trigger animation once when ≥50% visible
   useEffect(() => {
     if (!isLargeScreen || hasAnimated) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
@@ -34,47 +33,31 @@ const AnimatedCollage = () => {
       },
       { threshold: 0.5 }
     );
-
     if (containerRef.current) observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, [isLargeScreen, hasAnimated]);
 
-  // 4) If small screen, render a static grid (no animation)
+  // ✅ MOBILE SLIDER VIEW
   if (!isLargeScreen) {
     return (
-      <section className="w-full bg-[#f9f7f0] py-12 px-4">
-        <div className="max-w-md mx-auto grid grid-cols-2 gap-4">
-          <img
-            src={anime1}
-            alt="anime 1"
-            className="w-full h-auto object-cover rounded-lg"
-          />
-          <img
-            src={anime2}
-            alt="anime 2"
-            className="w-full h-auto object-cover rounded-lg"
-          />
-          <img
-            src={anime3}
-            alt="anime 3"
-            className="w-full h-auto object-cover rounded-lg"
-          />
-          <img
-            src={anime4}
-            alt="anime 4"
-            className="w-full h-auto object-cover rounded-lg"
-          />
-          <img
-            src={anime5}
-            alt="anime 5"
-            className="w-2/3 h-auto object-cover rounded-lg"
-          />
+      <section className="w-full bg-[#f9f7f0] py-10 px-4 lg:hidden">
+        <div className="overflow-x-auto scroll-smooth snap-x snap-mandatory">
+          <div className="flex gap-4">
+            {images.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={`anime ${idx + 1}`}
+                className="snap-center flex-shrink-0 w-[80%] h-auto object-cover rounded-lg shadow-md"
+              />
+            ))}
+          </div>
         </div>
       </section>
     );
   }
 
-  // 5) Large‐screen animated version
+  // ✅ LARGE SCREEN ANIMATED COLLAGE
   return (
     <section
       ref={containerRef}
@@ -85,9 +68,7 @@ const AnimatedCollage = () => {
         src={anime1}
         alt="anime 1"
         className={`
-          absolute
-          w-56 h-auto object-cover shadow-lg
-          transition-all duration-700 ease-in-out
+          absolute w-56 h-auto object-cover shadow-lg transition-all duration-700 ease-in-out
           ${
             triggerAnimation
               ? "top-8 left-8 opacity-100 scale-100 rotate-0"
@@ -102,9 +83,7 @@ const AnimatedCollage = () => {
         src={anime2}
         alt="anime 2"
         className={`
-          absolute
-          w-56 h-auto object-cover shadow-lg
-          transition-all duration-700 ease-in-out
+          absolute w-56 h-auto object-cover shadow-lg transition-all duration-700 ease-in-out
           ${
             triggerAnimation
               ? "top-8 right-8 opacity-100 scale-100 rotate-0"
@@ -119,9 +98,7 @@ const AnimatedCollage = () => {
         src={anime3}
         alt="anime 3"
         className={`
-          absolute
-          w-56 h-auto object-cover shadow-lg
-          transition-all duration-700 ease-in-out
+          absolute w-56 h-auto object-cover shadow-lg transition-all duration-700 ease-in-out
           ${
             triggerAnimation
               ? "bottom-8 left-8 opacity-100 scale-100 rotate-0"
@@ -136,13 +113,11 @@ const AnimatedCollage = () => {
         src={anime4}
         alt="anime 4"
         className={`
-          absolute
-          w-56 h-auto object-cover shadow-lg
-          transition-all duration-700 ease-in-out
+          absolute w-56 h-auto object-cover shadow-lg transition-all duration-700 ease-in-out
           ${
             triggerAnimation
               ? "bottom-8 right-8 opacity-100 scale-100 rotate-0"
-              : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-75 -rotate-12"
+              : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-75 rotate-12"
           }
         `}
         style={{ transitionDelay: triggerAnimation ? "800ms" : "0ms" }}
@@ -153,9 +128,7 @@ const AnimatedCollage = () => {
         src={anime5}
         alt="anime 5"
         className={`
-          absolute
-          w-32 h-auto object-cover shadow-lg
-          transition-all duration-700 ease-in-out
+          absolute w-32 h-auto object-cover shadow-lg transition-all duration-700 ease-in-out
           ${
             triggerAnimation
               ? "top-8 left-1/2 -translate-x-1/2 opacity-100 scale-100 rotate-0"
@@ -165,7 +138,7 @@ const AnimatedCollage = () => {
         style={{ transitionDelay: triggerAnimation ? "1000ms" : "0ms" }}
       />
 
-      {/* Central Text */}
+      {/* Text */}
       <div
         className={`
           absolute inset-0 flex max-w-[75%] mx-auto flex-col items-center justify-center

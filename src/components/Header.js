@@ -7,9 +7,9 @@ import logoLight from "../assets/images/logo.svg"; // Light background logo
 const navItems = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about-us" },
-  { name: "Virtual Tour", path: "/virtual-tour" },
+  // { name: "Virtual Tour", path: "/virtual-tour" },
   { name: "Facilities", path: "/facilities" },
-  { name: "KPV Group", path: "/kpv-group" },
+  // { name: "KPV Group", path: "/kpv-group" },
   { name: "Gallery", path: "/gallery" },
   { name: "Blog", path: "/blog" },
   { name: "Contact Us", path: "/contact-us" },

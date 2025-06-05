@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import accordian1 from '../assets/images/accordian.svg'
-import accordian2 from '../assets/images/accordian1.svg'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import accordian1 from '../assets/images/accordian.svg';
+import accordian2 from '../assets/images/accordian1.svg';
 
 const accordionItems = [
   {
@@ -36,6 +39,17 @@ const accordionItems = [
 const ImageAccordion = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const mobileSliderSettings = {
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <section className="w-full px-6 py-12 lg:px-24 lg:py-24">
       {/* Header */}
@@ -56,98 +70,72 @@ const ImageAccordion = () => {
         </div>
       </div>
 
-      {/* MOBILE VERSION: stacked cards */}
-      <div className="mt-12 block lg:hidden space-y-8">
-        {accordionItems.map((item) => (
-          <div
-            key={item.id}
-            className="relative w-full h-[40vh] bg-cover bg-center bg-no-repeat overflow-hidden rounded-lg transition-all duration-500"
-            style={{ backgroundImage: `url(${item.image})` }}
-          >
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/40" />
-
-            {/* Content overlay */}
-            <div className="relative z-10 flex flex-col justify-between h-full p-6 text-white">
-              <div>
-                <h3 className="text-xl font-serif font-semibold leading-snug mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm">{item.description}</p>
+      {/* MOBILE SLIDER VERSION */}
+      <div className="mt-12 block lg:hidden">
+        <Slider {...mobileSliderSettings}>
+          {accordionItems.map((item) => (
+            <div key={item.id} className="px-2">
+              <div
+                className="relative w-full h-[50vh] bg-cover bg-center bg-no-repeat overflow-hidden rounded-xl"
+                style={{ backgroundImage: `url(${item.image})` }}
+              >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="relative z-10 flex flex-col justify-between h-full p-6 text-white">
+                  <div>
+                    <h3 className="text-xl font-serif font-semibold leading-snug mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm">{item.description}</p>
+                  </div>
+                  <button className="self-start bg-yellow-500 hover:bg-yellow-600 transition-colors text-black font-medium py-2 px-4 rounded-full mt-4">
+                    View More
+                  </button>
+                </div>
+                {/* Number */}
+                <span className="absolute top-4 right-4 inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-black font-medium rounded-full">
+                  0{item.id}
+                </span>
               </div>
-              <button className="self-start bg-yellow-500 hover:bg-yellow-600 transition-colors text-black font-medium py-2 px-4 rounded-full">
-                View More
-              </button>
             </div>
-
-            {/* Number badge (mobile always shows it) */}
-            <span className="absolute top-4 right-4 inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-black font-medium rounded-full">
-              0{item.id}
-            </span>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
 
-      {/* DESKTOP/LARGE-SCREEN VERSION: image accordion */}
+      {/* DESKTOP ACCORDION VERSION */}
       <div className="mt-12 hidden lg:flex lg:h-[60vh]">
         {accordionItems.map((item, index) => {
           const isActive = index === activeIndex;
-
           return (
             <div
               key={item.id}
               onMouseEnter={() => setActiveIndex(index)}
-              className={`
-                relative
-                bg-cover bg-center bg-no-repeat mx-1
-                transition-all duration-500 ease-in-out
-                overflow-hidden
-                ${isActive ? 'flex-[5]' : 'flex-[0.5]'}
-              `}
+              className={`relative bg-cover bg-center bg-no-repeat mx-1 overflow-hidden transition-all duration-500 ease-in-out ${
+                isActive ? 'flex-[5]' : 'flex-[0.5]'
+              }`}
               style={{ backgroundImage: `url(${item.image})` }}
             >
-              {/* Black Overlay (always present, opacity varies) */}
               <div
-                className={`
-                  absolute inset-0 bg-black transition-opacity duration-500 ease-in-out
-                  ${isActive ? 'opacity-50' : 'opacity-30'}
-                `}
+                className={`absolute inset-0 bg-black transition-opacity duration-500 ease-in-out ${
+                  isActive ? 'opacity-50' : 'opacity-30'
+                }`}
               />
-
-              {/* Active content (only when hovered/active) */}
               {isActive && (
-                <div className="absolute inset-0 z-10 flex flex-col justify-center lg:justify-end px-8 lg:px-16 text-white">
+                <div className="absolute inset-0 z-10 flex flex-col justify-end px-8 lg:px-16 text-white pb-12">
                   <h3 className="text-2xl font-serif font-semibold leading-snug mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-base max-w-lg mb-6">
-                    {item.description}
-                  </p>
+                  <p className="text-base max-w-lg mb-6">{item.description}</p>
                 </div>
               )}
-
-              {/* Inactive tab label & number (bottom-center), active does not show number */}
-              <div
-                className={`
-                  absolute bottom-4 left-1/2 transform -translate-x-1/2
-                  flex flex-col items-center
-                  transition-opacity duration-500
-                `}
-              >
-                {/* Rotated title: hide when active */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500">
                 <span
-                  className={`
-                    text-white text-xs sm:text-sm font-medium tracking-wider
-                    transform -rotate-90 origin-center
-                    mb-24                     /* adds gap below text */
-                    whitespace-nowrap        /* prevents wrapping */
-                    ${isActive ? 'opacity-0' : 'opacity-100'}
-                  `}
+                  className={`text-white text-xs sm:text-sm font-medium tracking-wider transform -rotate-90 origin-center mb-24 whitespace-nowrap ${
+                    isActive ? 'opacity-0' : 'opacity-100'
+                  }`}
                 >
                   {item.title}
                 </span>
-
-                {/* Number circle: render only if NOT active */}
                 {!isActive && (
                   <span className="inline-flex items-center justify-center w-8 h-8 text-sm font-medium text-black bg-yellow-500 rounded-full">
                     0{item.id}

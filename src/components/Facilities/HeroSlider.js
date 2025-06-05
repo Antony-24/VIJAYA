@@ -1,23 +1,25 @@
 import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 import downarrow from '../../assets/images/down.svg'
+import slide from '../../assets/images/facilitiesh.svg'
 
 const slides = [
   {
     id: 0,
-    title: "Welcome to Our Website",
-    bg: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80",
+    title: "Facilities",
+    bg: slide
   },
   {
     id: 1,
-    title: "Explore Our Services",
-    bg: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1470&q=80",
+    title: "Facilities",
+    bg: slide
   },
   {
     id: 2,
-    title: "Join Us Today",
-    bg: "https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=1470&q=80",
+    title: "Facilities",
+    bg: slide
   },
+ 
 ];
 
 const HeroSlider = () => {
@@ -47,12 +49,12 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       <Slider ref={sliderRef} {...settings}>
         {slides.map(({ id, title, subtitle, bg }) => (
           <div key={id}>
             <div
-              className="w-full h-screen bg-center bg-cover flex flex-col justify-center items-start text-white px-8 sm:px-12 relative"
+              className="w-full h-[50vh] lg:h-screen lg:mt-0 mt-24 bg-center bg-cover flex flex-col justify-center items-start text-white px-8 sm:px-12 relative"
               style={{ backgroundImage: `url(${bg})` }}
             >
               <h1 className="text-5xl font-bold drop-shadow-lg mb-3 sm:text-4xl">{title}</h1>

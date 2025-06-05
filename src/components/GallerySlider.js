@@ -86,7 +86,17 @@ const GallerySlider = () => {
           i === activeSlide ? 'bg-white' : 'bg-white/30 hover:bg-white'
         }`}
       />
-    )
+    ),
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          centerPadding: '0px',
+          slidesToShow: 1
+        }
+      }
+    ]
   };
 
   const tabs = ['all', 'image', 'video'];
@@ -98,7 +108,7 @@ const GallerySlider = () => {
     >
       <div className="max-w-screen-2xl mx-auto px-6">
         {/* Header + Tabs */}
-        <div className="flex items-center justify-between mb-12 w-[90%] mx-auto">
+        <div className="grid md:flex gap items-center justify-between mb-12 w-[90%] mx-auto">
           <div>
             <p className="uppercase tracking-widest text-sm text-white/70">Gallery</p>
             <h2 className="text-4xl font-serif">Memorable Moments</h2>
@@ -132,13 +142,13 @@ const GallerySlider = () => {
                   <video
                     src={item.image}
                     controls
-                    className="w-full h-[500px] object-cover rounded"
+                    className="w-full h-[300px] lg:h-[500px] object-cover rounded"
                   />
                 ) : (
                   <img
                     src={item.image}
                     alt={`Slide ${index}`}
-                    className="w-full h-[500px] object-cover rounded"
+                    className="w-full h-[300px] lg:h-[500px] object-cover rounded"
                   />
                 )}
 
