@@ -47,12 +47,12 @@ export const TeamSection = () => {
                 <img
                   src={teamMemberImage}
                   alt="Director"
-                  className="w-56 md:w-63 h-72 md:h-80 object-contain border-l-4 border-b-4 border-white"
+                  className="w-56 md:w-63 object-contain border-l-4 border-b-4 border-white self-center"
                 />
               </div>
               <div className="flex-1 flex flex-col justify-center items-start md:ml-8 lg:ml-12 relative w-full max-w-3xl">
                 <div
-                  className="bg-white/20 p-6 md:p-10 lg:p-16 w-full relative"
+                  className="bg-white/10 p-6 md:p-10 lg:p-16 w-full relative"
                   style={{ minHeight: "280px", height: "100%" }}
                 >
                   <span className="absolute top-4 md:top-6 right-4 md:right-8 text-white text-4xl md:text-6xl font-bold opacity-80">

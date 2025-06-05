@@ -37,7 +37,7 @@ export const GroupSection = () => {
         <img
           src={kpvGroupImage}
           alt="KPV Group"
-          className="w-full max-w-md h-64 object-cover rounded-lg"
+          className="w-full max-w-md h-64 object-cover"
         />
       </div>
     </section>

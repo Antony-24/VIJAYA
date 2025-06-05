@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import accordian1 from '../assets/images/accordian.svg';
-import accordian2 from '../assets/images/accordian1.svg';
+import React, { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import accordian1 from "../assets/images/accordian.svg";
+import accordian2 from "../assets/images/accordian1.svg";
 
 const accordionItems = [
   {
     id: 1,
-    title: 'Corporate Events',
+    title: "Corporate Events",
     description:
-      'Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue—it’s where dreams are brought to life. A proud endeavor of the esteemed ',
+      "Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue—it’s where dreams are brought to life. A proud endeavor of the esteemed ",
     image: accordian1,
   },
   {
     id: 2,
-    title: 'Weddings & Celebrations',
+    title: "Weddings & Celebrations",
     description:
-      'Our exquisite wedding spaces blend timeless elegance with modern luxury. From grand ballrooms to intimate courtyards, we curate every detail to make your special day unforgettable—complete with personalized décor, gourmet catering, and world-class hospitality.',
+      "Our exquisite wedding spaces blend timeless elegance with modern luxury. From grand ballrooms to intimate courtyards, we curate every detail to make your special day unforgettable—complete with personalized décor, gourmet catering, and world-class hospitality.",
     image: accordian2,
   },
   {
     id: 3,
-    title: 'Exhibitions & Conferences',
+    title: "Exhibitions & Conferences",
     description:
-      'With state-of-the-art AV systems and sprawling exhibit halls, Vijaya is the perfect setting for large-scale exhibitions, trade shows, and international conferences. Our dedicated event team ensures seamless logistics and unparalleled technical support.',
+      "With state-of-the-art AV systems and sprawling exhibit halls, Vijaya is the perfect setting for large-scale exhibitions, trade shows, and international conferences. Our dedicated event team ensures seamless logistics and unparalleled technical support.",
     image: accordian2,
   },
   {
     id: 4,
-    title: 'Dining Area',
+    title: "Dining Area",
     description:
-      'Indulge in gourmet cuisine in our elegant dining spaces. From plated fine dining to lavish buffet spreads, our chefs use the freshest ingredients to craft menus that satisfy every palate—whether it’s a corporate luncheon or a black-tie gala.',
+      "Indulge in gourmet cuisine in our elegant dining spaces. From plated fine dining to lavish buffet spreads, our chefs use the freshest ingredients to craft menus that satisfy every palate—whether it’s a corporate luncheon or a black-tie gala.",
     image: accordian1,
   },
 ];
@@ -53,19 +53,23 @@ const ImageAccordion = () => {
   return (
     <section className="w-full px-6 py-12 lg:px-24 lg:py-24">
       {/* Header */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div>
-          <span className="text-sm tracking-widest uppercase text-yellow-500">
+          <h3 className="text-sm tracking-widest uppercase text-yellow-500">
             Services
-          </span>
-          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold leading-snug">
+          </h3>
+          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-serif font-medium leading-snug">
             A Venue Where Every Event <br className="hidden lg:block" />
             Becomes A Masterpiece.
           </h2>
         </div>
-        <div className="text-gray-700">
+        <div className="text-gray-700 text-sm">
           <p>
-            Nestled in the heart of elegance, Vijaya Convention Center is more than just a venue—it’s where dreams are brought to life. A proud endeavor of the esteemed KPV Group, Vijaya has been designed to host the most prestigious events with unmatched sophistication. For decades, Vijaya has been.
+            Nestled in the heart of elegance, Vijaya Convention Center is more
+            than just a venue—it’s where dreams are brought to life. A proud
+            endeavor of the esteemed KPV Group, Vijaya has been designed to host
+            the most prestigious events with unmatched sophistication. For
+            decades, Vijaya has been.
           </p>
         </div>
       </div>
@@ -111,13 +115,13 @@ const ImageAccordion = () => {
               key={item.id}
               onMouseEnter={() => setActiveIndex(index)}
               className={`relative bg-cover bg-center bg-no-repeat mx-1 overflow-hidden transition-all duration-500 ease-in-out ${
-                isActive ? 'flex-[5]' : 'flex-[0.5]'
+                isActive ? "flex-[5]" : "flex-[0.5]"
               }`}
               style={{ backgroundImage: `url(${item.image})` }}
             >
               <div
                 className={`absolute inset-0 bg-black transition-opacity duration-500 ease-in-out ${
-                  isActive ? 'opacity-50' : 'opacity-30'
+                  isActive ? "opacity-50" : "opacity-30"
                 }`}
               />
               {isActive && (
@@ -131,7 +135,7 @@ const ImageAccordion = () => {
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center transition-opacity duration-500">
                 <span
                   className={`text-white text-xs sm:text-sm font-medium tracking-wider transform -rotate-90 origin-center mb-24 whitespace-nowrap ${
-                    isActive ? 'opacity-0' : 'opacity-100'
+                    isActive ? "opacity-0" : "opacity-100"
                   }`}
                 >
                   {item.title}
