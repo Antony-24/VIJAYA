@@ -1,72 +1,65 @@
-import React from "react";
-import Slider from "react-slick";
-import {
-  FaShuttleVan,
-  FaTree,
-  FaLandmark,
-  FaParking,
-  FaChild,
-  FaBuilding,
-} from "react-icons/fa";
-import { MdOutlineArchitecture } from "react-icons/md";
+import React from 'react';
+import Slider from 'react-slick';
+import { FaShuttleVan, FaTree, FaLandmark, FaParking, FaChild, FaBuilding } from 'react-icons/fa';
+import { MdOutlineArchitecture } from 'react-icons/md';
 
 // Facilities data
 const facilities = [
   {
     id: 1,
     icon: <FaShuttleVan className="w-8 h-8" />,
-    title: "Pick Up & Drop",
+    title: 'Pick Up & Drop',
     description:
-      "We’ll pick up from the airport while you relax on your ride, ensuring a comfortable journey.",
+      'We’ll pick up from the airport while you relax on your ride, ensuring a comfortable journey.',
   },
   {
     id: 2,
     icon: <FaTree className="w-8 h-8" />,
-    title: "Scenic Outdoor Event Lawns",
+    title: 'Scenic Outdoor Event Lawns',
     description:
-      "Experience our beautifully landscaped lawns, perfect for outdoor events and gatherings.",
+      'Experience our beautifully landscaped lawns, perfect for outdoor events and gatherings.',
   },
   {
     id: 3,
     icon: <FaLandmark className="w-8 h-8" />,
-    title: "Spacious Grand Ballroom",
+    title: 'Spacious Grand Ballroom',
     description:
-      "Our grand ballroom offers ample space and elegance for your special occasions.",
+      'Our grand ballroom offers ample space and elegance for your special occasions.',
   },
   {
     id: 4,
     icon: <FaParking className="w-8 h-8" />,
-    title: "Ample Guest Parking",
+    title: 'Ample Guest Parking',
     description:
-      "Convenient and spacious parking facilities are available for all your guests.",
+      'Convenient and spacious parking facilities are available for all your guests.',
   },
   {
     id: 5,
     icon: <FaChild className="w-8 h-8" />,
-    title: "Dedicated Kids Play Zone",
+    title: 'Dedicated Kids Play Zone',
     description:
-      "A safe and fun-filled play area designed exclusively for children to enjoy.",
+      'A safe and fun-filled play area designed exclusively for children to enjoy.',
   },
   {
     id: 6,
     icon: <FaLandmark className="w-8 h-8" />,
-    title: "Spacious Grand Ballroom",
+    title: 'Spacious Grand Ballroom',
     description:
-      "Our grand ballroom offers ample space and elegance for your special occasions.",
+      'Our grand ballroom offers ample space and elegance for your special occasions.',
   },
   {
     id: 7,
     icon: <FaChild className="w-8 h-8" />,
-    title: "Dedicated Kids Play Zone",
+    title: 'Dedicated Kids Play Zone',
     description:
-      "A safe and fun-filled play area designed exclusively for children to enjoy.",
+      'A safe and fun-filled play area designed exclusively for children to enjoy.',
   },
   {
     id: 8,
     icon: <MdOutlineArchitecture className="w-8 h-8" />,
-    title: "Iconic Architecture & Interiors",
+    title: 'Iconic Architecture & Interiors',
     description:
-      "Marvel at our iconic architecture and thoughtfully designed interiors that blend tradition with modernity.",
+      'Marvel at our iconic architecture and thoughtfully designed interiors that blend tradition with modernity.',
   },
 ];
 
@@ -85,11 +78,11 @@ const AmenityCard = () => {
       <div className="max-w-7xl mx-auto text-center mb-12">
         <span
           className="text-sm tracking-widest uppercase"
-          style={{ color: "#C4A04B" }}
+          style={{ color: '#C4A04B' }}
         >
           Facilities
         </span>
-        <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-gray-900">
+        <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-serif font-semibold text-gray-900">
           World‐Class Amenities For Every Occasion
         </h2>
       </div>

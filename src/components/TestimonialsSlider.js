@@ -1,38 +1,38 @@
 // components/TestimonialsSlider.js
 
-import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import avatar from "../assets/images/anime3.svg"; // Replace with actual image path
+import React, { useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import avatar from '../assets/images/anime3.svg'; // Replace with actual image path
 
 const testimonials = [
   {
-    name: "Amanda Smith",
-    title: "Founder of Mangcoding",
+    name: 'Amanda Smith',
+    title: 'Founder of Mangcoding',
     content:
-      "Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.",
+      'Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.',
     image: avatar,
   },
   {
-    name: "Amanda Smith",
-    title: "Founder of Mangcoding",
+    name: 'Amanda Smith',
+    title: 'Founder of Mangcoding',
     content:
-      "Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.",
+      'Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.',
     image: avatar,
   },
   {
-    name: "Amanda Smith",
-    title: "Founder of Mangcoding",
+    name: 'Amanda Smith',
+    title: 'Founder of Mangcoding',
     content:
-      "Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.",
+      'Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.',
     image: avatar,
   },
   {
-    name: "Amanda Smith",
-    title: "Founder of Mangcoding",
+    name: 'Amanda Smith',
+    title: 'Founder of Mangcoding',
     content:
-      "Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.",
+      'Particular way thoroughly unaffected projection favorable Mrs can be projecting own. Thirty it matter enable become admire in giving.',
     image: avatar,
   },
 ];
@@ -43,35 +43,36 @@ const TestimonialsSlider = () => {
   const settings = {
     infinite: true,
     centerMode: true,
-    centerPadding: "15%", // medium spacing to show partial sides
+    centerPadding: '15%', // medium spacing to show partial sides
     slidesToShow: 2,
     autoplay: true,
     autoplaySpeed: 4000,
     speed: 1000,
     beforeChange: (_, next) => setActiveSlide(next),
     dots: true,
+    appendDots: (dots) => (
+      <div className="flex justify-center mt-8 space-x-2">{dots}</div>
+    ),
     customPaging: (i) => (
-      <div className="mt-12 w-full flex items-center justify-center">
-        <div
-          className={`h-2 transition-all duration-300 ${
-            i === activeSlide ? "bg-[#CBA135] w-14" : "bg-gray-300 w-2"
-          }`}
-        />
-      </div>
+      <div
+        className={`w-6 h-2 mt-6 rounded-sm ${
+          i === activeSlide ? 'bg-yellow-600' : 'bg-gray-300'
+        }`}
+      />
     ),
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
-          centerPadding: "12%",
+          centerPadding: '12%',
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          centerPadding: "8%",
+          centerPadding: '8%',
         },
       },
     ],
@@ -95,48 +96,25 @@ const TestimonialsSlider = () => {
             return (
               <div key={index} className="px-2">
                 <div
-                  className={`transition-all duration-500 w-full mx-auto p-8 shadow-lg relative
-                    ${
-                      isActive
-                        ? "bg-[#CBA135] text-white z-10"
-                        : "bg-[#f3ede3] text-gray-700 opacity-90 z-0 border border-yellow-100"
-                    }
-                  `}
-                  style={{ minHeight: 320 }}
+                  className={`transition-all duration-500 w-[90%] mx-auto rounded-xl p-6 shadow-sm ${
+                    isActive
+                      ? 'bg-yellow-600 text-white'
+                      : 'bg-[#f9f6f1] text-gray-800'
+                  }`}
                 >
-                  <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-4">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-20 h-20 object-cover mr-5"
+                      className="w-24 h-24 rounded-md object-cover mr-4"
                     />
                     <div>
-                      <h4
-                        className={`font-bold text-lg ${
-                          isActive ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        {item.name}
-                      </h4>
-                      <p
-                        className={`text-sm mt-1 ${
-                          isActive ? "text-yellow-100" : "text-gray-800"
-                        }`}
-                      >
-                        {item.title}
-                      </p>
+                      <h4 className="font-bold">{item.name}</h4>
+                      <p className="text-sm">{item.title}</p>
                     </div>
+                    <div className="ml-auto text-4xl font-bold opacity-20 leading-none">“</div>
                   </div>
-                  <div className="absolute top-6 right-8 text-6xl font-bold opacity-30 text-white pointer-events-none select-none">
-                    “
-                  </div>
-                  <p
-                    className={`text-base leading-relaxed mt-2 ${
-                      isActive ? "text-white" : "text-gray-800"
-                    }`}
-                  >
-                    {item.content}
-                  </p>
+                  <p className="text-sm">{item.content}</p>
                 </div>
               </div>
             );

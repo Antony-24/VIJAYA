@@ -1,38 +1,37 @@
-import React, { useState, useEffect } from "react";
-import slide1 from "../assets/images/slider-1.jpg";
-import slide2 from "../assets/images/slider-2.png";
-import { Button } from "./core/Button";
+import React, { useState, useEffect } from 'react';
+import slide1 from '../assets/images/slider-1.jpg';
+import slide2 from '../assets/images/slider-2.png';
 
 const slidesData = [
   {
     id: 1,
     image: slide1,
-    title: "Elevate Your Events With Excellence",
-    subtitle: "The Ultimate Luxury Experience",
-    buttonText: "Plan Your Event",
-    buttonHref: "#",
+    title: 'Elevate Your Events With Excellence',
+    subtitle: 'The Ultimate Luxury Experience',
+    buttonText: 'Plan Your Event',
+    buttonHref: '#',
     thumbnail: slide1,
-    thumbnailAlt: "Slide 1 Thumbnail",
+    thumbnailAlt: 'Slide 1 Thumbnail',
   },
   {
     id: 2,
     image: slide2,
-    title: "Unforgettable Moments Await",
-    subtitle: "Discover Sophistication & Style",
-    buttonText: "Explore Now",
-    buttonHref: "#",
+    title: 'Unforgettable Moments Await',
+    subtitle: 'Discover Sophistication & Style',
+    buttonText: 'Explore Now',
+    buttonHref: '#',
     thumbnail: slide2,
-    thumbnailAlt: "Slide 2 Thumbnail",
+    thumbnailAlt: 'Slide 2 Thumbnail',
   },
   {
     id: 3,
     image: slide1,
-    title: "Host Your Dream Gala Here",
-    subtitle: "World-Class Facilities",
-    buttonText: "Book a Tour",
-    buttonHref: "#",
+    title: 'Host Your Dream Gala Here',
+    subtitle: 'World-Class Facilities',
+    buttonText: 'Book a Tour',
+    buttonHref: '#',
     thumbnail: slide1,
-    thumbnailAlt: "Slide 3 Thumbnail",
+    thumbnailAlt: 'Slide 3 Thumbnail',
   },
 ];
 
@@ -61,7 +60,7 @@ const HeroSlider = () => {
             key={slide.id}
             className={`
               absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000
-              ${index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"}
+              ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}
             `}
             style={{ backgroundImage: `url(${slide.image})` }}
           >
@@ -79,14 +78,12 @@ const HeroSlider = () => {
         <h1 className="text-xl md:text-4xl lg:text-5xl font-serif leading-tight mb-6 max-w-3xl">
           {slidesData[currentIndex].title}
         </h1>
-        <Button
-          onClick={() =>
-            (window.location.href = slidesData[currentIndex].buttonHref)
-          }
-          className="w-full md:w-auto"
+        <a
+          href={slidesData[currentIndex].buttonHref}
+          className="inline-block bg-yellow-500 hover:bg-yellow-600 transition-colors text-black font-medium py-1 px-3 rounded-md w-full md:w-[20%]"
         >
           {slidesData[currentIndex].buttonText}
-        </Button>
+        </a>
       </div>
 
       {/* Thumbnails */}
@@ -96,12 +93,10 @@ const HeroSlider = () => {
             <button
               key={slide.id}
               onClick={() => goToSlide(index)}
-              className={`relative overflow-hidden transition-transform duration-300 focus:outline-none
-                ${
-                  index === currentIndex
-                    ? "scale-110 ring-2 ring-yellow-500"
-                    : "opacity-70 hover:opacity-100"
-                }
+              className={`relative overflow-hidden rounded-md transition-transform duration-300 focus:outline-none
+                ${index === currentIndex
+                  ? 'scale-110 ring-2 ring-yellow-500 w-[20%]'
+                  : 'opacity-70 hover:opacity-100'}
               `}
             >
               <img
